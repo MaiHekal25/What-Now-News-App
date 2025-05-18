@@ -22,6 +22,10 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         loadNews()
+
+        binding.swipeRefresh.setOnRefreshListener {
+            loadNews()
+        }
     }
 
     private fun loadNews() {
@@ -51,6 +55,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 showNews(articles)
                 binding.progress.isVisible = false
+                binding.swipeRefresh.isRefreshing = false
             }
 
             override fun onFailure(
@@ -59,6 +64,8 @@ class MainActivity : AppCompatActivity() {
             ) {
                 Log.d("###", "Error: Articles Are Not Available")
                 binding.progress.isVisible = false
+                binding.swipeRefresh.isRefreshing = false
+
             }
 
         })
