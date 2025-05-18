@@ -57,5 +57,7 @@ dependencies {
     implementation(libs.glide)
     //Logging-Interceptor
     implementation(libs.logging.interceptor)
+    //Swipe to refresh
+    implementation(libs.androidx.swiperefreshlayout)
 
 }
