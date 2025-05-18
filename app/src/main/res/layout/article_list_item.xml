@@ -42,10 +42,10 @@
             tools:text="@tools:sample/full_names" />
 
         <TextView
+            style="@style/TVStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/dots"
-            style="@style/TVStyle"
             app:layout_constraintBottom_toBottomOf="@id/shadow_view"
             app:layout_constraintStart_toEndOf="@id/article_txt"
             app:layout_constraintTop_toTopOf="@id/shadow_view" />
