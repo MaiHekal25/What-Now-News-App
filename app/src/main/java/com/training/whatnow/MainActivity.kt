@@ -3,6 +3,7 @@ package com.training.whatnow
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import com.training.whatnow.databinding.ActivityMainBinding
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -36,7 +37,6 @@ class MainActivity : AppCompatActivity() {
             .build()
 
 
-
         val c = retrofit.create(INews::class.java)
         c.getNews().enqueue(object : Callback<News> {
             override fun onResponse(
@@ -44,8 +44,9 @@ class MainActivity : AppCompatActivity() {
                 response: Response<News?>
             ) {
                 val news = response.body()
-                var articles = news?.articles
-                Log.d("###", "Articles:$articles ")
+                var articles = news?.articles!!
+                showNews(articles)
+                binding.progress.isVisible = false
             }
 
             override fun onFailure(
@@ -53,8 +54,14 @@ class MainActivity : AppCompatActivity() {
                 t: Throwable
             ) {
                 Log.d("###", "Error: Articles Are Not Available")
+                binding.progress.isVisible = false
             }
 
         })
+    }
+
+    private fun showNews(articles: ArrayList<Article>) {
+        val adapter = NewsAdapter(this, articles)
+        binding.recyclerNews.adapter = adapter
     }
 }
