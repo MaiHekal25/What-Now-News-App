@@ -45,6 +45,10 @@ class MainActivity : AppCompatActivity() {
             ) {
                 val news = response.body()
                 var articles = news?.articles!!
+
+                articles.removeAll {
+                    it.title == "[Removed]"
+                }
                 showNews(articles)
                 binding.progress.isVisible = false
             }
