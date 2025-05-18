@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">What Now</string>
+    <string name="dots">…</string>
+    <string name="share_icon">Share Icon</string>
 </resources>

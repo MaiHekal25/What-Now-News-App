@@ -35,10 +35,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
+            android:maxLength="28"
             app:layout_constraintBottom_toBottomOf="@id/shadow_view"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/shadow_view"
             tools:text="@tools:sample/full_names" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dots"
+            style="@style/TVStyle"
+            app:layout_constraintBottom_toBottomOf="@id/shadow_view"
+            app:layout_constraintStart_toEndOf="@id/article_txt"
+            app:layout_constraintTop_toTopOf="@id/shadow_view" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/share_fb"
@@ -47,6 +57,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:backgroundTint="@color/white"
+            android:contentDescription="@string/share_icon"
             android:src="@drawable/ic_share"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
